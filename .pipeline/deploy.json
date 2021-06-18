@@ -12,7 +12,6 @@
     },
     "variables": {
         "storageName": "[concat('function', uniqueString(variables('SiteName')))]",
-        "contentShareName": "[toLower(variables('SiteName'))]",
         "repoUrl": "https://github.com/CoryManson/LinkStrata",
         "branch": "main",
         "SiteName": "linkstrata",
@@ -20,9 +19,11 @@
     },
     "resources": [
         {
-            "apiVersion": "2016-03-01",
             "name": "[variables('SiteName')]",
             "type": "Microsoft.Web/sites",
+            "apiVersion": "2020-12-01",
+            "location": "[variables('Location')]",
+            "kind": "functionapp",
             "properties": {
                 "name": "[variables('SiteName')]",
                 "siteConfig": {
@@ -42,10 +43,6 @@
                         {
                             "name": "WEBSITE_CONTENTAZUREFILECONNECTIONSTRING",
                             "value": "[concat('DefaultEndpointsProtocol=https;AccountName=',variables('storageName'),';AccountKey=',listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('storageName')), '2015-05-01-preview').key1)]"
-                        },
-                        {
-                            "name": "WEBSITE_CONTENTSHARE",
-                            "value": "[variables('contentShareName')]"
                         },
                         {
                             "name": "DEFAULT_PAGE",
@@ -72,9 +69,7 @@
             ],
             "dependsOn": [
                 "[resourceId('Microsoft.Storage/storageAccounts', variables('storageName'))]"
-            ],
-            "location": "[variables('Location')]",
-            "kind": "functionapp"
+            ]
         },
         {
             "apiVersion": "2015-05-01-preview",
