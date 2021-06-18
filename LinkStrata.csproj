@@ -30,7 +30,7 @@
     <None Update="www/assets/images/Azure-Functions-Logo.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="www/index.html">
+    <None Update="www/**">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="local.settings.json">
