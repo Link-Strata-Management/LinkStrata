@@ -1,10 +1,18 @@
 {
+    "$schema": "http://json.schemastore.org/proxies",
     "proxies": {
-        "files": {
+        "root": {
+            "disabled": false,
             "matchCondition": {
+                "methods": [
+                    "GET"
+                ],
                 "route": "{*path}"
             },
-            "backendUri": "https://localhost/api/StaticFileServer?file={path}"
+            "backendUri": "https://localhost/api/ServeStaticFile?file={path}",
+            "responseOverrides": {
+                "response.headers.Cache-Control": "public,max-age=600"
+            }
         }
     }
 }
