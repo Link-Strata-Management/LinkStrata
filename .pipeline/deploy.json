@@ -37,7 +37,7 @@
                         },
                         {
                             "name": "FUNCTIONS_EXTENSION_VERSION",
-                            "value": "~1"
+                            "value": "~3"
                         },
                         {
                             "name": "WEBSITE_CONTENTAZUREFILECONNECTIONSTRING",
@@ -50,10 +50,6 @@
                         {
                             "name": "DEFAULT_PAGE",
                             "value": "[parameters('defaultPage')]"
-                        },
-                        {
-                            "name": "ROUTING_EXTENSION_VERSION",
-                            "value": "~0.1"
                         }
                     ]
                 },
