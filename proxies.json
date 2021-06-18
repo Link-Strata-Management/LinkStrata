@@ -1,32 +1,10 @@
 {
-    "$schema": "http://json.schemastore.org/proxies",
     "proxies": {
-        "redirect-to-app": {
-            "disabled": false,
+        "files": {
             "matchCondition": {
-                "methods": [
-                    "GET"
-                ],
-                "route": "/"
+                "route": "{*path}"
             },
-            "responseOverrides": {
-                "response.statusCode": "302",
-                "response.headers.Location": "/app/"
-            }
-        },
-        "app": {
-            "disabled": false,
-            "matchCondition": {
-                "methods": [
-                    "GET",
-                    "OPTIONS"
-                ],
-                "route": "/app/{*path}"
-            },
-            "backendUri": "https://localhost/api/ServeStaticFile?file={path}",
-            "responseOverrides": {
-                "response.headers.Cache-Control": "public,max-age=600"
-            }
+            "backendUri": "https://%WEBSITE_SITE_NAME%.azurewebsites.net/api/StaticFileServer?file={path}"
         }
     }
 }
