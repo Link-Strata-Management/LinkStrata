@@ -15,19 +15,7 @@
     <None Update="proxies.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="StaticFileServer/function.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="StaticFileServer/project.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="StaticFileServer/project.lock.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="StaticFileServer/run.csx">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="www/assets/images/Azure-Functions-Logo.png">
+    <None Update="StaticFileServer/*">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="www/**">
