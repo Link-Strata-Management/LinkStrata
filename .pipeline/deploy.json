@@ -47,6 +47,10 @@
                         {
                             "name": "DEFAULT_PAGE",
                             "value": "[parameters('defaultPage')]"
+                        },
+                        {
+                            "name": "AzureWebJobsScriptRoot",
+                            "value": "C:\\home\\site\\wwwroot"
                         }
                     ]
                 },
