@@ -1,6 +1,0 @@
-AuthUserFile /home/link/www.linkservices.com.au/password/stats
-AuthName "Web Site Statistics"
-AuthType Basic
-<Limit GET PUT POST>
-	require valid-user
-</Limit>
