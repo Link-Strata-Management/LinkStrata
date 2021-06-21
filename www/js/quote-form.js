@@ -88,7 +88,7 @@ $(document).ready(function () {
                     name: name,
                     email: email,
                     message: message,
-                    type: 'quote'
+                    type: 'Quote'
                 })
             })
                 .then((res) => processResponse(res))
