@@ -35,6 +35,11 @@ $(document).ready(function () {
         </div>        
         `;
                 document.getElementById('output').innerHTML = output;
+
+                //reset values in all input fields
+                $('#contact_form input').val('');
+                $('#contact_form textarea').val('');
+
             } else {
                 output =
                     `

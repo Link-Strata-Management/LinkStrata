@@ -8,9 +8,9 @@ $(document).ready(function () {
         var user_name = $('input[name=name]').val();
         var user_phone = $('input[name=phone]').val();
         var user_email = $('input[name=email]').val();
-        var user_class = $('input[name=class]').val();
+        var user_class = $('select[name=class]').val();
         var user_unitplan = $('input[name=unitplan]').val();
-        var user_currentlymanaged = $('input[name=currentlymanaged]').val();
+        var user_currentlymanaged = $('select[name=currentlymanaged]').val();
         var user_address = $('input[name=address]').val();
         var user_unitscount = $('input[name=unitscount]').val();
         var user_additional = $('textarea[name=additional]').val();
@@ -56,6 +56,10 @@ $(document).ready(function () {
         </div>        
         `;
                 document.getElementById('output').innerHTML = output;
+
+                //reset values in all input fields
+                $('#contact_form input').val('');
+                $('#contact_form textarea').val('');
             } else {
                 output =
                     `
