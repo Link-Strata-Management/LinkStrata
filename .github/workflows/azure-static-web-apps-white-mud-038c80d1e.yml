@@ -18,7 +18,7 @@ jobs:
       - name: Replace tokens
         uses: cschleiden/replace-tokens@v1.0
         with:
-          files: '["**/function.json"]'
+          files: '["${{ github.workspace }}/api/send-mailmessage/function.json"]'
         env:
           SENDGRID_APIKEY: ${{ secrets.SENDGRID_APIKEY }}
       - uses: actions/checkout@v2
