@@ -28,31 +28,18 @@ $(document).ready(function(){
         
         //everything looks good! proceed...
         if (proceed) {
-            //data to be sent to server
-            post_data = {
-                'userName': user_name,
-                'userEmail': user_email,
-                'userMessage': user_message
-            };
-            
-            //Ajax post data to server
-            $.post('contact_me.php', post_data, function(response){
-            
-                //load json data from server and output message     
-                if (response.type == 'error') {
-                    output = '<div class="error">' + response.text + '</div>';
-                }
-                else {
-                
-                    output = '<div class="success">' + response.text + '</div>';
-                    
-                    //reset values in all input fields
-                    $('#contact_form input').val('');
-                    $('#contact_form textarea').val('');
-                }
-                
-                $("#result").hide().html(output).slideDown();
-            }, 'json');
+            fetch('/api/send-mailmessage', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json, text/plain, */*',
+                    'Content-type': 'application/json'
+                },
+                body: JSON.stringify({
+                    name: user_name,
+                    email: user_email,
+                    message: user_message
+                })
+            })
             
         }
         
