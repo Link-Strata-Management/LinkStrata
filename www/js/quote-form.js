@@ -40,13 +40,11 @@ $(document).ready(function () {
         }
 
         if (user_additional == "") {
-            user_additional = 'N/A'
-            proceed = true;
+            user_additional = 'N/A';
         }
 
         if (user_unitplan == "") {
-            user_unitplan = 'N/A'
-            proceed = true;
+            user_unitplan = 'N/A';
         }
 
         function processResponse(response) {
