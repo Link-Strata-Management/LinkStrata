@@ -6,8 +6,13 @@ $(document).ready(function () {
 
         //get input field values
         var user_name = $('input[name=name]').val();
+        var user_phone = $('input[name=phone]').val();
         var user_email = $('input[name=email]').val();
-        var user_message = $('textarea[name=message]').val();
+        var user_class = $('input[name=class]').val();
+        var user_unitplan = $('input[name=unitplan]').val();
+        var user_address = $('input[name=address]').val();
+        var user_unitscount = $('input[name=unitscount]').val();
+        var user_additional = $('textarea[name=additional]').val();
 
         //simple validation at client's end
         //we simply change border color to red if empty field using .css()
@@ -16,14 +21,31 @@ $(document).ready(function () {
             $('input[name=name]').css('border-color', '#e41919');
             proceed = false;
         }
+        if (user_phone == "") {
+            $('input[name=phone]').css('border-color', '#e41919');
+            proceed = false;
+        }
         if (user_email == "") {
             $('input[name=email]').css('border-color', '#e41919');
             proceed = false;
         }
-
-        if (user_message == "") {
-            $('textarea[name=message]').css('border-color', '#e41919');
+        if (user_address == "") {
+            $('input[name=address]').css('border-color', '#e41919');
             proceed = false;
+        }
+        if (user_unitscount == "") {
+            $('input[name=unitscount]').css('border-color', '#e41919');
+            proceed = false;
+        }
+
+        if (user_additional == "") {
+            user_additional = 'N/A'
+            proceed = true;
+        }
+
+        if (user_unitplan == "") {
+            user_unitplan = 'N/A'
+            proceed = true;
         }
 
         function processResponse(response) {
@@ -46,14 +68,12 @@ $(document).ready(function () {
             }
         }
 
-
-
         //everything looks good! proceed...
         if (proceed) {
 
             let name = $('input[name=name]').val();
             let email = $('input[name=email]').val();
-            let message = $('textarea[name=message]').val();
+            let message = `Name: ${user_name} \n Phone: ${user_phone}  \n Email: ${user_email} \n Unit Class: ${user_class} \n UP Number: ${user_unitplan} \n Address: ${user_address} \n Number of Units: ${user_unitscount} \n Additional ${user_additional}`
 
             fetch('/api/send-mailmessage', {
                 method: 'POST',
