@@ -26,32 +26,15 @@ $(document).ready(function () {
             proceed = false;
         }
 
-        //everything looks good! proceed...
-        if (proceed) {
-            fetch('/api/send-mailmessage', {
-                method: 'POST',
-                headers: {
-                    'Accept': 'application/json, text/plain, */*',
-                    'Content-type': 'application/json'
-                },
-                body: JSON.stringify({
-                    name: user_name,
-                    email: user_email,
-                    message: user_message
-                })
-            })
-
+        function processResponse(response) {
             if (response.status === 200) {
                 output =
                     `
         <div class="alert alert-success" role="alert">
-        Thanks, ${document.getElementById('name').value}! We'll be in touch soon!
+          Thanks, ${document.getElementById('name').value}! We'll be in touch soon!
         </div>        
         `;
                 document.getElementById('output').innerHTML = output;
-                // reset values in all input fields
-                $('#contact_form input').val('');
-                $('#contact_form textarea').val('');
             } else {
                 output =
                     `
@@ -61,26 +44,30 @@ $(document).ready(function () {
         `;
                 document.getElementById('output').innerHTML = output;
             }
+        }
 
 
-            // $.post('contact_me.php', post_data, function(response){
 
-            //     //load json data from server and output message     
-            //     if (response.type == 'error') {
-            //         output = '<div class="error">' + response.text + '</div>';
-            //     }
-            //     else {
+        //everything looks good! proceed...
+        if (proceed) {
 
-            //         output = '<div class="success">' + response.text + '</div>';
+            let name = $('input[name=name]').val();
+            let email = $('input[name=email]').val();
+            let message = $('textarea[name=message]').val();
 
-            //         //reset values in all input fields
-            //         $('#contact_form input').val('');
-            //         $('#contact_form textarea').val('');
-            //     }
-
-            // $("#result").hide().html(output).slideDown();
-            // }, 'json');
-
+            fetch('/api/send-mailmessage', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json, text/plain, */*',
+                    'Content-type': 'application/json'
+                },
+                body: JSON.stringify({
+                    name: name,
+                    email: email,
+                    message: message
+                })
+            })
+                .then((res) => processResponse(res))
         }
 
         return false;
