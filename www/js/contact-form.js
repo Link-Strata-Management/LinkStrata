@@ -69,7 +69,8 @@ $(document).ready(function () {
                 body: JSON.stringify({
                     name: name,
                     email: email,
-                    message: message
+                    message: message,
+                    type: 'Contact'
                 })
             })
                 .then((res) => processResponse(res))
