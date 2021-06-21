@@ -20,7 +20,7 @@ jobs:
         with:
           tokenPrefix: '{'
           tokenSuffix: '}'
-          files: '["**/*.function.json"]'
+          files: '["**/*function.json"]'
         env:
           SENDGRID_APIKEY: ${{ secrets.SENDGRID_APIKEY }}
       - uses: actions/checkout@v2
