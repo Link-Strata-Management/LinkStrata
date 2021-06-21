@@ -1,0 +1,27 @@
+{
+    "disabled": false,
+    "bindings": [
+        {
+            "authLevel": "anonymous",
+            "type": "httpTrigger",
+            "direction": "in",
+            "name": "req",
+            "methods": [
+                "get",
+                "post"
+            ]
+        },
+        {
+            "type": "http",
+            "direction": "out",
+            "name": "res"
+        },
+        {
+            "type": "sendGrid",
+            "name": "message",
+            "apiKey": "#{SENDGRID_APIKEY}#",
+            "to": "cory+sendgrid@manson.id.au",
+            "direction": "out"
+        }
+    ]
+}
