@@ -5,7 +5,6 @@
     <title>Link Strata Management | Strata Management Canberra</title>
     <meta name="description" content="">
     <meta charset="utf-8">
-    <meta name="author" content="https://themeforest.net/user/bestlooker/portfolio">
     <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -79,15 +78,8 @@
 
                     <!-- Hero Content -->
                     <div class="home-content">
-                        <h1 class="hs-line-4 mb-30 mb-xs-20 wow fadeInUpShort" data-wow-delay=".1s">Awards Winning
-                            Creative Studio</h1>
-                        <h2 class="hs-line-7 mb-60 mb-xs-40 wow fadeInUpShort" data-wow-delay=".2s">We turn ideas into
-                            reality</h2>
-                        <div class="local-scroll mb-20 wow fadeInUpShort" data-wow-delay=".3s">
-                            <a href="#about" class="btn btn-mod btn-medium btn-round mx-md-1">Learn More</a>
-                            <a href="pages-services-1.html" class="btn btn-mod btn-medium btn-round mx-md-1">Start
-                                Project</a>
-                        </div>
+                        <!-- <h1 class="hs-line-4 mb-30 mb-xs-20 wow fadeInUpShort" data-wow-delay=".1s">LINK Corporate Services</h1> -->
+                        <h2 class="hs-line-7 mb-60 mb-xs-40 wow fadeInUpShort" data-wow-delay=".2s">Enjoy the benefits of property ownership</h2>
                     </div>
                     <!-- End Hero Content -->
 
@@ -837,54 +829,6 @@
     <script src="js/jquery.ajaxchimp.min.js"></script>
     <script src="js/objectFitPolyfill.min.js"></script>
     <script src="js/splitting.min.js"></script>
-
-
-    <!-- Contact Us Form Submit -->
-    <script>
-        document.getElementById('contact_form').addEventListener('submit', submitMessage);
-
-        function processResponse(response) {
-            if (response.status === 200) {
-                output =
-                    `
-            <div class="alert alert-success" role="alert">
-              Thanks, ${document.getElementById('name').value}! We'll be in touch soon!
-            </div>        
-            `;
-                document.getElementById('output').innerHTML = output;
-            } else {
-                output =
-                    `
-            <div class="alert alert-danger" role="alert">
-              Oh no! Something went wrong :(
-            </div>        
-            `;
-                document.getElementById('output').innerHTML = output;
-            }
-        }
-
-        function submitMessage(e) {
-            e.preventDefault();
-
-            let name = document.getElementById('name').value;
-            let email = document.getElementById('email').value;
-            let message = document.getElementById('message').value;
-
-            fetch('/api/send-mailmessage', {
-                method: 'POST',
-                headers: {
-                    'Accept': 'application/json, text/plain, */*',
-                    'Content-type': 'application/json'
-                },
-                body: JSON.stringify({
-                    name: name,
-                    email: email,
-                    message: message
-                })
-            })
-                .then((res) => processResponse(res))
-        }
-    </script>
 </body>
 
 </html>
