@@ -18,9 +18,7 @@ jobs:
       - name: Replace tokens
         uses: cschleiden/replace-tokens@v1.0
         with:
-          tokenPrefix: '{'
-          tokenSuffix: '}'
-          files: '["**/*function.json"]'
+          files: '["**/function.json"]'
         env:
           SENDGRID_APIKEY: ${{ secrets.SENDGRID_APIKEY }}
       - uses: actions/checkout@v2
