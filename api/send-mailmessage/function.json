@@ -1,4 +1,5 @@
 {
+    "disabled": false,
     "bindings": [
         {
             "authLevel": "anonymous",
@@ -14,6 +15,13 @@
             "type": "http",
             "direction": "out",
             "name": "res"
+        },
+        {
+            "type": "sendGrid",
+            "name": "message",
+            "apiKey": "{SENDGRID_APIKEY}",
+            "to": "cory+sendgrid@manson.id.au",
+            "direction": "out"
         }
     ]
 }

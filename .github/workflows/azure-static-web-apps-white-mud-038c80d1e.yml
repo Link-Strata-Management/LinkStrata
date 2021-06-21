@@ -15,6 +15,14 @@ jobs:
     runs-on: ubuntu-latest
     name: Build and Deploy Job
     steps:
+      - name: Replace tokens
+        uses: cschleiden/replace-tokens@v1.0
+        with:
+          tokenPrefix: '{'
+          tokenSuffix: '}'
+          files: '["**/*.function.json"]'
+        env:
+          SENDGRID_APIKEY: ${{ secrets.SENDGRID_APIKEY }}
       - uses: actions/checkout@v2
         with:
           submodules: true
