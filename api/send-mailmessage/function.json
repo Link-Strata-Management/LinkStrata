@@ -20,7 +20,7 @@
             "type": "sendGrid",
             "name": "message",
             "apiKey": "#{SENDGRID_APIKEY}#",
-            "to": "cory@manson.id.au",
+            "to": "#{EMAIL_TO}#",
             "direction": "out"
         }
     ]
