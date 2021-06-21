@@ -42,12 +42,24 @@ $(document).ready(function () {
             })
 
             if (response.status === 200) {
-                output = '<div class="success">' + response.text + '</div>';
+                output =
+                    `
+        <div class="alert alert-success" role="alert">
+        Thanks, ${document.getElementById('name').value}! We'll be in touch soon!
+        </div>        
+        `;
+                document.getElementById('output').innerHTML = output;
                 // reset values in all input fields
                 $('#contact_form input').val('');
                 $('#contact_form textarea').val('');
             } else {
-                output = '<div class="error">' + response.text + '</div>';
+                output =
+                    `
+        <div class="alert alert-danger" role="alert">
+          Oh no! Something went wrong :(
+        </div>        
+        `;
+                document.getElementById('output').innerHTML = output;
             }
 
 
@@ -66,7 +78,7 @@ $(document).ready(function () {
             //         $('#contact_form textarea').val('');
             //     }
 
-                $("#result").hide().html(output).slideDown();
+            // $("#result").hide().html(output).slideDown();
             // }, 'json');
 
         }
