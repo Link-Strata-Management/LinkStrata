@@ -19,7 +19,7 @@
         {
             "type": "sendGrid",
             "name": "message",
-            "apiKey": "#{SENDGRID_APIKEY}#",
+            "apiKey": "SENDGRID_APIKEY",
             "to": "#{EMAIL_TO}#",
             "direction": "out"
         }
