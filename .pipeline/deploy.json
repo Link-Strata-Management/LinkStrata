@@ -1,108 +1,32 @@
 {
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json",
     "contentVersion": "1.0.0.0",
-    "parameters": {
-        "defaultPage": {
-            "type": "string",
-            "defaultValue": "index.html",
-            "metadata": {
-                "description": "Default web page to show when directory is accessed."
-            }
-        }
-    },
-    "variables": {
-        "storageName": "[concat('function', uniqueString(variables('SiteName')))]",
-        "repoUrl": "https://github.com/CoryManson/LinkStrata",
-        "branch": "main",
-        "SiteName": "linkstrata",
-        "Location": "australiaeast"
-    },
+    "parameters": {},
+    "variables": {},
     "resources": [
         {
-            "name": "[variables('SiteName')]",
-            "type": "Microsoft.Web/sites",
+            "name": "swa-linkstrata",
+            "type": "Microsoft.Web/staticSites",
             "apiVersion": "2020-12-01",
-            "location": "[variables('Location')]",
-            "kind": "functionapp",
+            "location": "westus2",
+            "tags": {},
             "properties": {
-                "name": "[variables('SiteName')]",
-                "siteConfig": {
-                    "appSettings": [
-                        {
-                            "name": "AzureWebJobsDashboard",
-                            "value": "[concat('DefaultEndpointsProtocol=https;AccountName=',variables('storageName'),';AccountKey=',listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('storageName')), '2015-05-01-preview').key1)]"
-                        },
-                        {
-                            "name": "AzureWebJobsStorage",
-                            "value": "[concat('DefaultEndpointsProtocol=https;AccountName=',variables('storageName'),';AccountKey=',listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('storageName')), '2015-05-01-preview').key1)]"
-                        },
-                        {
-                            "name": "FUNCTIONS_EXTENSION_VERSION",
-                            "value": "~3"
-                        },
-                        {
-                            "name": "WEBSITE_CONTENTAZUREFILECONNECTIONSTRING",
-                            "value": "[concat('DefaultEndpointsProtocol=https;AccountName=',variables('storageName'),';AccountKey=',listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('storageName')), '2015-05-01-preview').key1)]"
-                        },
-                        {
-                            "name": "DEFAULT_PAGE",
-                            "value": "[parameters('defaultPage')]"
-                        },
-                        {
-                            "name": "AzureWebJobsScriptRoot",
-                            "value": "C:\\home\\site\\wwwroot"
-                        }
-                    ]
+                "repositoryUrl": "https://github.com/CoryManson/LinkStrata",
+                "branch": "main",
+                "repositoryToken": "string",
+                "buildProperties": {
+                    "appLocation": "./www",
+                    "apiLocation": "./api",
+                    "appArtifactLocation": "",
+                    "skipGithubActionWorkflowGeneration": true
                 },
-                "clientAffinityEnabled": false
+                "stagingEnvironmentPolicy": "Enabled"
             },
-            "resources": [
-                {
-                    "apiVersion": "2015-08-01",
-                    "name": "web",
-                    "type": "sourcecontrols",
-                    "dependsOn": [
-                        "[resourceId('Microsoft.Web/Sites', variables('SiteName'))]"
-                    ],
-                    "properties": {
-                        "RepoUrl": "[variables('repoURL')]",
-                        "branch": "[variables('branch')]",
-                        "IsManualIntegration": true
-                    }
-                }
-            ],
-            "dependsOn": [
-                "[resourceId('Microsoft.Storage/storageAccounts', variables('storageName'))]"
-            ]
-        },
-        {
-            "apiVersion": "2015-05-01-preview",
-            "type": "Microsoft.Storage/storageAccounts",
-            "name": "[variables('storageName')]",
-            "location": "[variables('Location')]",
-            "properties": {
-                "accountType": "Standard_LRS"
+            "sku": {
+                "name": "Free",
+                "tier": "Free"
             },
-            "resources": [
-                {
-                    "type": "Microsoft.Storage/storageAccounts/providers/locks",
-                    "name": "[concat(variables('storageName'), '/Microsoft.Authorization/', variables('storageName'))]",
-                    "apiVersion": "2015-01-01",
-                    "dependsOn": [
-                        "[concat('Microsoft.Storage/storageAccounts/', variables('storageName'))]"
-                    ],
-                    "properties": {
-                        "level": "CannotDelete",
-                        "notes": "One or more function apps were linked to this storage account. You can see all the function apps linked to the account under 'files' or 'shares'."
-                    }
-                }
-            ]
+            "resources": []
         }
-    ],
-    "outputs": {
-        "siteUri": {
-            "type": "string",
-            "value": "[concat('https://',reference(resourceId('Microsoft.Web/sites', variables('SiteName'))).hostNames[0])]"
-        }
-    }
+    ]
 }
