@@ -1,6 +1,6 @@
 # LinkStrata
 
-[![Azure Static Web Apps CI/CD](https://github.com/CoryManson/LinkStrata/actions/workflows/azure-static-web-apps-white-mud-038c80d1e.yml/badge.svg?branch=main)](https://github.com/CoryManson/LinkStrata/actions/workflows/azure-static-web-apps-white-mud-038c80d1e.yml)
+[![Azure Static Web Apps CI/CD](https://github.com/Link-Strata-Management/LinkStrata/actions/workflows/azure-static-web-apps-red-sea-0d8c65d00.yml/badge.svg)](https://github.com/Link-Strata-Management/LinkStrata/actions/workflows/azure-static-web-apps-red-sea-0d8c65d00.yml)
 
 Azure Static Web App for LINK Corporate Services.
 
