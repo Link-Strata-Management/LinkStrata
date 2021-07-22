@@ -22,12 +22,12 @@
     <link rel="stylesheet" href="css/splitting.css">
 
     <!-- Google reCaptcha -->
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-     <script>
-       function onSubmit(token) {
-         document.getElementById("contact_form").submit();
-       }
-     </script>
+    <script src="https://www.google.com/recaptcha/api.js"></script>
+    <script>
+        function onSubmit(token) {
+            document.getElementById("contact_form").submit();
+        }
+    </script>
 
 </head>
 
@@ -625,12 +625,10 @@
                                         <!-- Send Button -->
                                         <div id="output"></div>
                                         <div class="text-end pt-10">
-                                            <button class="submit_btn btn btn-mod btn-large btn-round" 
-                                                id="submit_btn"
-                                                aria-controls="result" 
-                                                data-sitekey="6LeLobEbAAAAAASdWrS84scuKY1z_2JHPbTP4gYl"
-                                                data-callback='onSubmit'
-                                                data-action='submit'>
+                                            <button class="submit_btn btn btn-mod btn-large btn-round g-recaptcha"
+                                                id="submit_btn" aria-controls="result"
+                                                data-sitekey="6Lf_y7EbAAAAAADh2TW95pVa3i0q7Y_PCHG47YJh"
+                                                data-callback='onSubmit' data-action='submit'>
                                                 Submit Message
                                             </button>
                                         </div>

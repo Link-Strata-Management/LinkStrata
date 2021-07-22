@@ -48,10 +48,9 @@ $(document).ready(function () {
         </div>        
         `;
                 document.getElementById('output').innerHTML = output;
+                console.log(response.status);
             }
         }
-
-
 
         //everything looks good! proceed...
         if (proceed) {
@@ -70,6 +69,7 @@ $(document).ready(function () {
                     name: name,
                     email: email,
                     message: message,
+                    recaptcha: g-recaptcha-response,
                     type: 'Contact'
                 })
             })
