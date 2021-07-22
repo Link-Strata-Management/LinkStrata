@@ -19,9 +19,6 @@ module.exports = async function (context, req) {
         // if reCaptcha succeeds
         if (response.success == true) {
             var email = {
-                from: {
-                    email: req.body.email
-                },
                 subject: "New " + req.body.type + " form submission from: " + req.body.name,
                 content: [{
                     type: 'text/plain',

@@ -4,6 +4,14 @@
 $(document).ready(function () {
     $("#submit_btn").click(function () {
 
+        var contactForm = document.getElementById("contact-form");
+        contactForm.onsubmit = checkRecaptcha;
+        function checkRecaptcha(event) {
+            event.preventDefault(); // Don't let the browser submit the form.
+            grecaptcha.execute(); // Trigger the CAPTCHA verification.
+            return false;
+        }
+
         //get input field values
         var user_name = $('input[name=name]').val();
         var user_email = $('input[name=email]').val();
@@ -53,11 +61,12 @@ $(document).ready(function () {
         }
 
         //everything looks good! proceed...
-        if (proceed) {
+        function submitContactForm() {
 
             let name = $('input[name=name]').val();
             let email = $('input[name=email]').val();
             let message = $('textarea[name=message]').val();
+            let captcha = $('textarea[name=g-recaptcha-response]').val();
 
             fetch('/api/send-mailmessage', {
                 method: 'POST',
@@ -69,7 +78,7 @@ $(document).ready(function () {
                     name: name,
                     email: email,
                     message: message,
-                    recaptcha: g-recaptcha-response,
+                    captcha: captcha,
                     type: 'Contact'
                 })
             })
