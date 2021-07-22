@@ -5,7 +5,6 @@ module.exports = async function (context, req) {
             //     email: req.body.email
             // },
             "personalizations": [{ "to": [{ "email": "sendgrid@cory.manson.id.au" },{ "email": "cory@manson.id.au" }] }],
-            // to: ["sendgrid@cory.manson.id.au", "cory@manson.id.au"],
             subject: "New " + req.body.type + " form submission from: " + req.body.name,
             content: [{
                 type: 'text/plain',

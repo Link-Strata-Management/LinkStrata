@@ -20,7 +20,7 @@
             "type": "sendGrid",
             "name": "message",
             "apiKey": "SENDGRID_APIKEY",
-            "from": "#{EMAIL_FROM}#",
+            "from": "Link Strata Management <#{EMAIL_FROM}#>",
             "direction": "out"
         }
     ]
