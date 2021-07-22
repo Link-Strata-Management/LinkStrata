@@ -4,14 +4,6 @@
 $(document).ready(function () {
     $("#submit_btn").click(function () {
 
-        var contactForm = document.getElementById("contact-form");
-        contactForm.onsubmit = checkRecaptcha;
-        function checkRecaptcha(event) {
-            event.preventDefault(); // Don't let the browser submit the form.
-            grecaptcha.execute(); // Trigger the CAPTCHA verification.
-            return false;
-        }
-
         //get input field values
         var user_name = $('input[name=name]').val();
         var user_email = $('input[name=email]').val();
@@ -61,28 +53,32 @@ $(document).ready(function () {
         }
 
         //everything looks good! proceed...
-        function submitContactForm() {
+        if (proceed) {
+            e.preventDefault();
+            grecaptcha.ready(function () {
+                grecaptcha.execute('6Lf_y7EbAAAAAADh2TW95pVa3i0q7Y_PCHG47YJh', { action: 'submit' }).then(function (token) {
+                    let name = $('input[name=name]').val();
+                    let email = $('input[name=email]').val();
+                    let message = $('textarea[name=message]').val();
+                    let captcha = $('textarea[name=g-recaptcha-response]').val();
 
-            let name = $('input[name=name]').val();
-            let email = $('input[name=email]').val();
-            let message = $('textarea[name=message]').val();
-            let captcha = $('textarea[name=g-recaptcha-response]').val();
-
-            fetch('/api/send-mailmessage', {
-                method: 'POST',
-                headers: {
-                    'Accept': 'application/json, text/plain, */*',
-                    'Content-type': 'application/json'
-                },
-                body: JSON.stringify({
-                    name: name,
-                    email: email,
-                    message: message,
-                    captcha: captcha,
-                    type: 'Contact'
-                })
-            })
-                .then((res) => processResponse(res))
+                    fetch('/api/send-mailmessage', {
+                        method: 'POST',
+                        headers: {
+                            'Accept': 'application/json, text/plain, */*',
+                            'Content-type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            name: name,
+                            email: email,
+                            message: message,
+                            captcha: captcha,
+                            type: 'Contact'
+                        })
+                    })
+                        .then((res) => processResponse(res))
+                });
+            });
         }
 
         return false;
