@@ -9,31 +9,29 @@ module.exports = async function (context, req) {
             response: req.captcha
         }
     }
+    let response = await fetch(captchaVerify)
 
-    // make HTTP request to verify the captcha
-    request(captchaVerify, (err, response, body) => {
-        // if reCaptcha succeeds
-        if (captchaVerify.success == true) {
-            var email = {
-                subject: "New " + req.body.type + " form submission from: " + req.body.name,
-                content: [{
-                    type: 'text/plain',
-                    value: req.body.message
-                }]
-            };
+    // if reCaptcha succeeds
+    if (response.success == true) {
+        var email = {
+            subject: "New " + req.body.type + " form submission from: " + req.body.name,
+            content: [{
+                type: 'text/plain',
+                value: req.body.message
+            }]
+        };
 
-            return {
-                res: {
-                    status: 200
-                },
-                message: email
-            };
-        } else {
-            return {
-                res: {
-                    status: captchaVerify.error-codes
-                }
-            };
-        }
-    })
+        return {
+            res: {
+                status: 200
+            },
+            message: email
+        };
+    } else {
+        return {
+            res: {
+                status: 400
+            }
+        };
+    }
 };

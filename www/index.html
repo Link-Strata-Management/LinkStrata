@@ -619,7 +619,7 @@
                                         <div class="text-end pt-10">
                                             <div class="g-recaptcha"
                                                 data-sitekey="6LdhyLIbAAAAAMAVqVStgLrlwhtHBoQcDSA8JnNy"
-                                                data-callback="enableBtn"></div>
+                                                data-callback="enableBtn" data-expired-callback="disableBtn"></div>
                                             <button class="submit_btn btn btn-mod btn-large btn-round g-recaptcha"
                                                 id="submit_btn" aria-controls="result" disabled="disabled">
                                                 Submit Message
@@ -755,6 +755,9 @@
     <script>
         function enableBtn() {
             document.getElementById("submit_btn").disabled = false;
+        }
+        function disableBtn() {
+            document.getElementById("submit_btn").disabled = true;
         }
     </script>
 </body>

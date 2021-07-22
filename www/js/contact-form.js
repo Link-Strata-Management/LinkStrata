@@ -48,7 +48,6 @@ $(document).ready(function () {
         </div>        
         `;
                 document.getElementById('output').innerHTML = output;
-                console.log(response.status);
             }
         }
 
@@ -57,7 +56,7 @@ $(document).ready(function () {
             let name = $('input[name=name]').val();
             let email = $('input[name=email]').val();
             let message = $('textarea[name=message]').val();
-            let captcha = $('textarea[name=g-recaptcha-response]');
+            let captcha = $('textarea[name=g-recaptcha-response]').val();
 
             fetch('/api/send-mailmessage', {
                 method: 'POST',
