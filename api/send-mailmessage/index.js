@@ -1,3 +1,5 @@
+const fetch = require("node-fetch");
+
 module.exports = async function (context, req) {
     const secret_key = '6LdhyLIbAAAAAP5plHFoE6Qvv-hZVt7O07y1uzIf';
     const token = req.captcha;
