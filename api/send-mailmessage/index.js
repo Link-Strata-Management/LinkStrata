@@ -1,25 +1,25 @@
 module.exports = async function (context, req) {
 
     // build a POST request to verify the captcha
-    var captchaVerify = {
-        uri: 'https://www.google.com/recaptcha/api/siteverify',
-        method: 'post',
-        form: {
-            secret: '6LdhyLIbAAAAAP5plHFoE6Qvv-hZVt7O07y1uzIf',
-            response: req.captcha
-        }
-    }
+    // var captchaVerify = {
+    //     uri: 'https://www.google.com/recaptcha/api/siteverify',
+    //     method: 'post',
+    //     form: {
+    //         secret: '6LdhyLIbAAAAAP5plHFoE6Qvv-hZVt7O07y1uzIf',
+    //         response: req.captcha
+    //     }
+    // }
+
     var obj;
-    fetch(captchaVerify)
-        .then(res => res.json())
-        .then(data => obj = data)
-    // .catch(function (err) {
-    //     return {
-    //         res: {
-    //             status: 400
-    //         }
-    //     };
-    // });
+    const secret_key = '6LdhyLIbAAAAAP5plHFoE6Qvv-hZVt7O07y1uzIf';
+    const token = req.captcha;
+    const url = `https://www.google.com/recaptcha/api/siteverify?secret=${secret_key}&response=${token}`;
+    fetch(url, {
+        method: 'post'
+    })
+        .then(response => response.json())
+        .then(google_response => obj = res.json({ google_response }))
+        // .catch(error => res.json({ error }));
 
     // if reCaptcha succeeds
     if (obj.success == true) {
