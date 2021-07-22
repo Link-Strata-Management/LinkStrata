@@ -54,13 +54,13 @@ $(document).ready(function () {
 
         //everything looks good! proceed...
         if (proceed) {
-            e.preventDefault();
+            preventDefault();
             grecaptcha.ready(function () {
                 grecaptcha.execute('6Lf_y7EbAAAAAADh2TW95pVa3i0q7Y_PCHG47YJh', { action: 'submit' }).then(function (token) {
                     let name = $('input[name=name]').val();
                     let email = $('input[name=email]').val();
                     let message = $('textarea[name=message]').val();
-                    let captcha = $('textarea[name=g-recaptcha-response]').val();
+                    let captcha = $('textarea[name=g-recaptcha-response]');
 
                     fetch('/api/send-mailmessage', {
                         method: 'POST',
