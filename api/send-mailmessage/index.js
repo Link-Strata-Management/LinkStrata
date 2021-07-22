@@ -4,7 +4,7 @@ module.exports = async function (context, req) {
             // from: {
             //     email: req.body.email
             // },
-            "personalizations": [{ "to": [{ "email": "#{EMAIL_TO}#" },{ "email": req.body.email }] }],
+            "personalizations": [{ "to": [{ "email": "#{EMAIL_TO}#" },{ "email": "\"" + req.body.email + "\"" }] }],
             subject: "New " + req.body.type + " form submission from: " + req.body.name,
             content: [{
                 type: 'text/plain',
