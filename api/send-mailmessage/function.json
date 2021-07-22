@@ -21,6 +21,7 @@
             "name": "message",
             "apiKey": "SENDGRID_APIKEY",
             "to": "#{EMAIL_TO}#",
+            "from": "#{EMAIL_FROM}#",
             "direction": "out"
         }
     ]
