@@ -9,13 +9,20 @@ module.exports = async function (context, req) {
             response: req.captcha
         }
     }
-    let response = await fetch(captchaVerify)
-    if (response.ok) {
-        let json = await response.json();
-    }
+    var obj;
+    fetch(captchaVerify)
+        .then(res => res.json())
+        .then(data => obj = data)
+    // .catch(function (err) {
+    //     return {
+    //         res: {
+    //             status: 400
+    //         }
+    //     };
+    // });
 
     // if reCaptcha succeeds
-    if (json.success == true) {
+    if (obj.success == true) {
         var email = {
             subject: "New " + req.body.type + " form submission from: " + req.body.name,
             content: [{
