@@ -617,9 +617,11 @@
                                         <!-- Send Button -->
                                         <div id="output"></div>
                                         <div class="text-end pt-10">
-                                            <div class="g-recaptcha" data-sitekey="6LdhyLIbAAAAAMAVqVStgLrlwhtHBoQcDSA8JnNy"></div>
+                                            <div class="g-recaptcha"
+                                                data-sitekey="6LdhyLIbAAAAAMAVqVStgLrlwhtHBoQcDSA8JnNy"
+                                                data-callback="enableBtn"></div>
                                             <button class="submit_btn btn btn-mod btn-large btn-round g-recaptcha"
-                                                id="submit_btn" aria-controls="result">
+                                                id="submit_btn" aria-controls="result" disabled="disabled">
                                                 Submit Message
                                             </button>
                                         </div>
@@ -750,6 +752,11 @@
     <script src="js/jquery.ajaxchimp.min.js"></script>
     <script src="js/objectFitPolyfill.min.js"></script>
     <script src="js/splitting.min.js"></script>
+    <script>
+        function enableBtn() {
+            document.getElementById("submit_btn").disabled = false;
+        }
+    </script>
 </body>
 
 </html>

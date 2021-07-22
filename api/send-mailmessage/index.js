@@ -6,7 +6,7 @@ module.exports = async function (context, req) {
         method: 'post',
         form: {
             secret: '6LdhyLIbAAAAAP5plHFoE6Qvv-hZVt7O07y1uzIf',
-            response: req.recaptcha
+            response: req.captcha
         }
     }
 
