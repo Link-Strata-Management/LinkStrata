@@ -21,6 +21,14 @@
     <link rel="stylesheet" href="css/animate.min.css">
     <link rel="stylesheet" href="css/splitting.css">
 
+    <!-- Google reCaptcha -->
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+     <script>
+       function onSubmit(token) {
+         document.getElementById("contact_form").submit();
+       }
+     </script>
+
 </head>
 
 <body class="appear-animate">
@@ -87,7 +95,8 @@
                     <div class="home-content">
                         <!-- <h1 class="hs-line-4 mb-30 mb-xs-10 wow fadeInUpShort" data-wow-delay=".1s">Get the new
                             experience with</h1> -->
-                        <h2 class="hs-line-7 mb-60 mb-xs-20 wow fadeInUpShort" data-wow-delay=".2s">Your Boutique Strata Managers</h2>
+                        <h2 class="hs-line-7 mb-60 mb-xs-20 wow fadeInUpShort" data-wow-delay=".2s">Your Boutique Strata
+                            Managers</h2>
                         <div class="local-scroll mb-20 mb-xs-0 wow fadeInUpShort" data-wow-delay=".3s">
                         </div>
                     </div>
@@ -616,8 +625,12 @@
                                         <!-- Send Button -->
                                         <div id="output"></div>
                                         <div class="text-end pt-10">
-                                            <button class="submit_btn btn btn-mod btn-large btn-round" id="submit_btn"
-                                                aria-controls="result">
+                                            <button class="submit_btn btn btn-mod btn-large btn-round" 
+                                                id="submit_btn"
+                                                aria-controls="result" 
+                                                data-sitekey="6LeLobEbAAAAAASdWrS84scuKY1z_2JHPbTP4gYl"
+                                                data-callback='onSubmit'
+                                                data-action='submit'>
                                                 Submit Message
                                             </button>
                                         </div>
@@ -665,7 +678,7 @@
                         <div class="col-md-8 offset-md-2 text-center">
                             <h3 class="call-action-1-heading">Want to discuss how to make the change?</h3>
                             <div class="call-action-1-decription mb-60 mb-sm-30">
-                                Contact the friendly LINK team to make the switch! 
+                                Contact the friendly LINK team to make the switch!
                             </div>
 
                             <div class="local-scroll">
