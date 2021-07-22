@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="css/splitting.css">
 
     <!-- Google reCaptcha -->
-    <script src="https://www.google.com/recaptcha/api.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
 </head>
 
@@ -617,10 +617,9 @@
                                         <!-- Send Button -->
                                         <div id="output"></div>
                                         <div class="text-end pt-10">
+                                            <div class="g-recaptcha" data-sitekey="6LdhyLIbAAAAAMAVqVStgLrlwhtHBoQcDSA8JnNy"></div>
                                             <button class="submit_btn btn btn-mod btn-large btn-round g-recaptcha"
-                                                id="submit_btn" aria-controls="result"
-                                                data-sitekey="6Lf_y7EbAAAAAADh2TW95pVa3i0q7Y_PCHG47YJh"
-                                                data-callback='onSubmit' data-action='submit'>
+                                                id="submit_btn" aria-controls="result">
                                                 Submit Message
                                             </button>
                                         </div>
@@ -751,11 +750,6 @@
     <script src="js/jquery.ajaxchimp.min.js"></script>
     <script src="js/objectFitPolyfill.min.js"></script>
     <script src="js/splitting.min.js"></script>
-    <script>
-        function onSubmit(token) {
-            document.getElementById("contact_form").submit();
-        }
-    </script>
 </body>
 
 </html>
