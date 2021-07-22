@@ -54,31 +54,26 @@ $(document).ready(function () {
 
         //everything looks good! proceed...
         if (proceed) {
-            preventDefault();
-            grecaptcha.ready(function () {
-                grecaptcha.execute('6Lf_y7EbAAAAAADh2TW95pVa3i0q7Y_PCHG47YJh', { action: 'submit' }).then(function (token) {
-                    let name = $('input[name=name]').val();
-                    let email = $('input[name=email]').val();
-                    let message = $('textarea[name=message]').val();
-                    let captcha = $('textarea[name=g-recaptcha-response]');
+            let name = $('input[name=name]').val();
+            let email = $('input[name=email]').val();
+            let message = $('textarea[name=message]').val();
+            let captcha = $('textarea[name=g-recaptcha-response]');
 
-                    fetch('/api/send-mailmessage', {
-                        method: 'POST',
-                        headers: {
-                            'Accept': 'application/json, text/plain, */*',
-                            'Content-type': 'application/json'
-                        },
-                        body: JSON.stringify({
-                            name: name,
-                            email: email,
-                            message: message,
-                            captcha: captcha,
-                            type: 'Contact'
-                        })
-                    })
-                        .then((res) => processResponse(res))
-                });
-            });
+            fetch('/api/send-mailmessage', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json, text/plain, */*',
+                    'Content-type': 'application/json'
+                },
+                body: JSON.stringify({
+                    name: name,
+                    email: email,
+                    message: message,
+                    captcha: captcha,
+                    type: 'Contact'
+                })
+            })
+                .then((res) => processResponse(res))
         }
 
         return false;

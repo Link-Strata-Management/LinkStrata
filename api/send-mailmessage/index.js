@@ -1,16 +1,12 @@
 module.exports = async function (context, req) {
 
-    // get the client's ip address
-    const ip = args['__ow_headers']['x-client-ip']
-
     // build a POST request to verify the captcha
     var r = {
         uri: 'https://www.google.com/recaptcha/api/siteverify',
         method: 'post',
         form: {
             secret: '6Lf_y7EbAAAAAHAPVdRZ3Mcn3VrkRm0Y9gCe44s8',
-            response: req.recaptcha,
-            remoteip: ip
+            response: req.recaptcha
         }
     }
 
