@@ -10,9 +10,12 @@ module.exports = async function (context, req) {
         }
     }
     let response = await fetch(captchaVerify)
+    if (response.ok) {
+        let json = await response.json();
+    }
 
     // if reCaptcha succeeds
-    if (response.success == true) {
+    if (json.success == true) {
         var email = {
             subject: "New " + req.body.type + " form submission from: " + req.body.name,
             content: [{
