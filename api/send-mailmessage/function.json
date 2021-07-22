@@ -21,6 +21,7 @@
             "name": "message",
             "apiKey": "SENDGRID_APIKEY",
             "from": "#{EMAIL_FROM}#",
+            "fromname": "Link Strata Management",
             "direction": "out"
         }
     ]
