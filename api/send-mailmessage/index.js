@@ -8,7 +8,7 @@ module.exports = async function (context, req) {
         uri: 'https://www.google.com/recaptcha/api/siteverify',
         method: 'post',
         form: {
-            secret: args['RECAPTCHA_SECRET'],
+            secret: RECAPTCHA_SECRET,
             response: req.recaptcha,
             remoteip: ip
         }
