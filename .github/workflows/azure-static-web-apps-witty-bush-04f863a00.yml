@@ -21,7 +21,7 @@ jobs:
       - name: Replace tokens
         uses: cschleiden/replace-tokens@v1.0
         with:
-          files: '["api/send-mailmessage/function.json"]'
+          files: '["api/send-mailmessage/function.json","api/send-mailmessage/index.js"]'
         env:
           EMAIL_TO: ${{ secrets.EMAIL_TO }}
           EMAIL_FROM: ${{ secrets.EMAIL_FROM }}
