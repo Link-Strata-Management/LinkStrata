@@ -58,7 +58,7 @@
                 output =
                     `
         <div class="alert alert-danger" role="alert">
-          Oh no! Something went wrong :(
+          An error has occured. Please try again or contact us directly.
         </div>        
         `;
                 document.getElementById('output').innerHTML = output;
