@@ -1,7 +1,7 @@
 /* ---------------------------------------------
  Contact form
  --------------------------------------------- */
-$(document).ready(function () {
+ $(document).ready(function () {
     $("#submit_btn").click(function () {
 
         //get input field values
@@ -14,6 +14,7 @@ $(document).ready(function () {
         var user_address = $('input[name=address]').val();
         var user_unitscount = $('input[name=unitscount]').val();
         var user_additional = $('textarea[name=additional]').val();
+        var captcha = $('textarea[name=g-recaptcha-response]').val();
 
         //simple validation at client's end
         //we simply change border color to red if empty field using .css()
@@ -47,6 +48,19 @@ $(document).ready(function () {
             user_unitplan = 'N/A';
         }
 
+        if (captcha == "") {
+
+            output =
+                output =
+                `
+        <div class="alert alert-info" role="alert">
+        Please complete the CAPTCHA.
+        </div>        
+        `;
+            document.getElementById('output').innerHTML = output;
+            proceed = false;
+        }
+
         function processResponse(response) {
             if (response.status === 200) {
                 output =
@@ -76,7 +90,7 @@ $(document).ready(function () {
 
             let name = $('input[name=name]').val();
             let email = $('input[name=email]').val();
-            let message = `A new quote has been requested. \n\nName: ${user_name} \nPhone: ${user_phone}  \nEmail: ${user_email} \nUnit Class: ${user_class} \nUP Number: ${user_unitplan} \nCurrently Managed: ${user_currentlymanaged} \nAddress: ${user_address} \nNumber of Units: ${user_unitscount} \nAdditional: ${user_additional}`;
+            let message = `Hi ${user_name}, Thanks for contacting us regarding a new quote. A member of our staff will be in contact shortly. \n\n\nHere's the details you've sent to us: \n\nName: ${user_name} \nPhone: ${user_phone}  \nEmail: ${user_email} \nUnit Class: ${user_class} \nUP Number: ${user_unitplan} \nCurrently Managed: ${user_currentlymanaged} \nAddress: ${user_address} \nNumber of Units: ${user_unitscount} \nAdditional: ${user_additional}`;
             let captcha = $('textarea[name=g-recaptcha-response]').val();
 
             fetch('/api/send-mailmessage', {
@@ -90,7 +104,7 @@ $(document).ready(function () {
                     email: email,
                     message: message,
                     captcha: captcha,
-                    type: 'Quote'
+                    type: 'quote'
                 })
             })
                 .then((res) => processResponse(res))

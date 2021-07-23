@@ -1,11 +1,12 @@
+const Grecaptcha = require('grecaptcha')
+const client = new Grecaptcha('#{CAPTCHA_SECRET}#')
+
 module.exports = async function (context, req) {
-    if (req.body.email) {
+
+    if (await client.verify(req.body.captcha)) {
         var email = {
-            // from: {
-            //     email: req.body.email
-            // },
-            "personalizations": [{ "to": [{ "email": "#{EMAIL_FROM}#" },{ "email": req.body.email }] }],
-            subject: "New " + req.body.type + " form submission from: " + req.body.name,
+            "personalizations": [{ "to": [{ "email": "#{EMAIL_FROM}#" }, { "email": req.body.email }] }],
+            subject: req.body.name + ": New website" + req.body.type + " submission",
             content: [{
                 type: 'text/plain',
                 value: req.body.message

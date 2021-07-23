@@ -190,22 +190,26 @@ You can find the code of your language here - https://www.w3schools.com/tags/ref
                                 </div>
 
                                 <div class="row">
-                                    <div class="col-sm-6">
+                                    <div class="col-sm">
                                         <!-- Empty -->
                                     </div>
-                                    <div class="col-sm-6">
-                                        <div class="col-sm">
-                                            <!-- reCaptcha -->
-                                            <div class="g-recaptcha"
-                                                data-sitekey="6LdhyLIbAAAAAMAVqVStgLrlwhtHBoQcDSA8JnNy"
-                                                data-callback="enableBtn" data-expired-callback="disableBtn"></div>
+                                    <div class="col-sm text-center">
+                                        <!-- reCaptcha -->
+                                        <div class="g-recaptcha" data-sitekey="6LfTc7YbAAAAAOHU0asGx0HT92aUfEwu6o5fh_y7"
+                                            data-callback="enableBtn" data-expired-callback="disableBtn"></div>
+                                        <div class="text-center" id="captchaNotify">
+                                            <p class="form-tip pt-sm-0 mb-sm-20 ">To help us combat spam, please
+                                                complete the CAPTCHA.
+                                            </p>
                                         </div>
+                                    </div>
+                                    <div class="col-sm">
                                         <!-- Send Button -->
-                                        <div id="output"></div>
-                                        <div class="text-end pt-10">
-                                            <button class="submit_btn btn btn-mod btn-large btn-round" id="submit_btn"
-                                                aria-controls="result">
-                                                Submit Message
+                                        <div class="text-center" id="output"></div>
+                                        <div class="pt-10 text-center">
+                                            <button class="submit_btn btn btn-mod btn-large btn-round g-recaptcha"
+                                                id="submit_btn" aria-controls="result">
+                                                Submit Quote Request
                                             </button>
                                         </div>
                                     </div>
@@ -404,14 +408,6 @@ You can find the code of your language here - https://www.w3schools.com/tags/ref
     <script src="js/jquery.ajaxchimp.min.js"></script>
     <script src="js/objectFitPolyfill.min.js"></script>
     <script src="js/splitting.min.js"></script>
-    <script>
-        function enableBtn() {
-            document.getElementById("submit_btn").disabled = false;
-        }
-        function disableBtn() {
-            document.getElementById("submit_btn").disabled = true;
-        }
-    </script>
 </body>
 
 </html>

@@ -1,13 +1,14 @@
 /* ---------------------------------------------
  Contact form
  --------------------------------------------- */
-$(document).ready(function () {
+ $(document).ready(function () {
     $("#submit_btn").click(function () {
 
         //get input field values
         var user_name = $('input[name=name]').val();
         var user_email = $('input[name=email]').val();
         var user_message = $('textarea[name=message]').val();
+        var captcha = $('textarea[name=g-recaptcha-response]').val();
 
         //simple validation at client's end
         //we simply change border color to red if empty field using .css()
@@ -26,6 +27,19 @@ $(document).ready(function () {
             proceed = false;
         }
 
+        if (captcha == "") {
+
+            output =
+                output =
+                `
+        <div class="alert alert-info" role="alert">
+        Please complete the CAPTCHA.
+        </div>        
+        `;
+            document.getElementById('output').innerHTML = output;
+            proceed = false;
+        }
+
         function processResponse(response) {
             if (response.status === 200) {
                 output =
@@ -39,7 +53,7 @@ $(document).ready(function () {
                 //reset values in all input fields
                 $('#contact_form input').val('');
                 $('#contact_form textarea').val('');
-
+                grecaptcha.reset()
             } else {
                 output =
                     `
@@ -48,6 +62,7 @@ $(document).ready(function () {
         </div>        
         `;
                 document.getElementById('output').innerHTML = output;
+                grecaptcha.reset()
             }
         }
 
@@ -55,7 +70,7 @@ $(document).ready(function () {
         if (proceed) {
             let name = $('input[name=name]').val();
             let email = $('input[name=email]').val();
-            let message = $('textarea[name=message]').val();
+            let message = `Hi ${user_name}, Thanks for contacting us with your message. A member of our staff will be in contact shortly. \n\n\nHere's the details you've sent to us: \n\nName: ${user_name}  \nEmail: ${user_email} \nMessage: ${user_message}`;
             let captcha = $('textarea[name=g-recaptcha-response]').val();
 
             fetch('/api/send-mailmessage', {
@@ -69,7 +84,7 @@ $(document).ready(function () {
                     email: email,
                     message: message,
                     captcha: captcha,
-                    type: 'Contact'
+                    type: 'contact'
                 })
             })
                 .then((res) => processResponse(res))
