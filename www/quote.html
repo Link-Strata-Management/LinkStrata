@@ -24,6 +24,9 @@ You can find the code of your language here - https://www.w3schools.com/tags/ref
     <link rel="stylesheet" href="css/animate.min.css">
     <link rel="stylesheet" href="css/splitting.css">
 
+    <!-- Google reCaptcha -->
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
 </head>
 
 <body class="appear-animate">
@@ -61,7 +64,7 @@ You can find the code of your language here - https://www.w3schools.com/tags/ref
                 <!-- Main Menu -->
                 <div class="inner-nav desktop-nav">
                     <ul class="clearlist scroll-nav local-scroll">
-                        <li></li><a href="/">Home</a></li>
+                        <li><a href="/">Home</a></li>
                         <li><a href="/#about">About</a></li>
                         <li><a href="/#services">Services</a></li>
                         <li><a href="/#contact">Contact</a></li>
@@ -79,8 +82,8 @@ You can find the code of your language here - https://www.w3schools.com/tags/ref
 
         <main id="main">
 
-            <!-- Contact Section -->
-            <section class="page-section">
+            <!-- Quote Section -->
+            <section class="page-section" id="quote">
                 <div class="container relative">
                     <div class="row">
                         <div class="col-lg-10 offset-lg-1">
@@ -141,15 +144,17 @@ You can find the code of your language here - https://www.w3schools.com/tags/ref
                                         <div class="form-group">
                                             <label for="unitplan">Unit Plan Number</label>
                                             <input type="text" name="unitplan" id="unitplan"
-                                                class="input-lg round form-control" placeholder="Enter Your Unit Plan Number (Optional)"
-                                                required aria-required="true">
+                                                class="input-lg round form-control"
+                                                placeholder="Enter Your Unit Plan Number (Optional)" required
+                                                aria-required="true">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <!-- Currently Managed -->
                                         <div class="form-group">
                                             <label for="currentlymanaged">Is your complex currently managed</label>
-                                            <select class="input-lg round form-control" name="currentlymanaged" id="currentlymanaged">
+                                            <select class="input-lg round form-control" name="currentlymanaged"
+                                                id="currentlymanaged">
                                                 <option value="No">No</option>
                                                 <option value="Self Managed">Self Managed</option>
                                                 <option value="Professional Services">Professional Services</option>
@@ -160,14 +165,16 @@ You can find the code of your language here - https://www.w3schools.com/tags/ref
                                         <!-- Number of Units -->
                                         <div class="form-group">
                                             <label for="unitscount">Number of Units/Townhouses</label>
-                                            <input type="number" id="unitscount" class="input-lg round form-control" name="unitscount" min="1" placeholder="Enter a Number">
+                                            <input type="number" id="unitscount" class="input-lg round form-control"
+                                                name="unitscount" min="1" placeholder="Enter a Number">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <!-- Name -->
                                         <div class="form-group">
                                             <label for="address">Address</label>
-                                            <input type="text" name="address" id="address" class="input-lg round form-control"
+                                            <input type="text" name="address" id="address"
+                                                class="input-lg round form-control"
                                                 placeholder="Enter your full street address" required
                                                 aria-required="true">
                                         </div>
@@ -183,16 +190,26 @@ You can find the code of your language here - https://www.w3schools.com/tags/ref
                                 </div>
 
                                 <div class="row">
-                                    <div class="col-sm-6">
+                                    <div class="col-sm">
                                         <!-- Empty -->
                                     </div>
-                                    <div class="col-sm-6">
+                                    <div class="col-sm text-center">
+                                        <!-- reCaptcha -->
+                                        <div class="g-recaptcha" data-sitekey="6LfTc7YbAAAAAOHU0asGx0HT92aUfEwu6o5fh_y7"
+                                            data-callback="enableBtn" data-expired-callback="disableBtn"></div>
+                                        <div class="text-center" id="captchaNotify">
+                                            <p class="form-tip pt-sm-0 mb-sm-20 ">To help us combat spam, please
+                                                complete the CAPTCHA.
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm">
                                         <!-- Send Button -->
-                                        <div id="output"></div>
-                                        <div class="text-end pt-10">
-                                            <button class="submit_btn btn btn-mod btn-large btn-round" id="submit_btn"
-                                                aria-controls="result">
-                                                Submit Message
+                                        <div class="text-center" id="output"></div>
+                                        <div class="pt-10 text-center">
+                                            <button class="submit_btn btn btn-mod btn-large btn-round g-recaptcha"
+                                                id="submit_btn" aria-controls="result">
+                                                Submit Quote Request
                                             </button>
                                         </div>
                                     </div>
@@ -202,122 +219,122 @@ You can find the code of your language here - https://www.w3schools.com/tags/ref
 
                         </div>
                     </div>
-                    <!-- End Contact Form -->
+            </section>
+            <!-- End Contact Form -->
 
-                    <div class="text-center mb-80 mb-sm-50">
-                        <h2 class="section-title">Contact</h2>
-                    </div>
+            <section class="page-section" id="contact">
 
-                    <div class="row mb-60 mb-xs-40">
+                <div class="text-center mb-80 mb-sm-50">
+                    <h2 class="section-title">Contact</h2>
+                </div>
 
-                        <div class="col-md-10 offset-md-1">
-                            <div class="row">
+                <div class="row mb-60 mb-xs-40">
 
-                                <!-- Phone -->
-                                <div class="col-sm-6 col-lg-4 pb-20">
-                                    <div class="contact-item wow fadeScaleIn" data-wow-delay="0" data-wow-duration="1s">
-                                        <div class="ci-icon">
-                                            <i class="fa fa-phone-alt"></i>
-                                        </div>
-                                        <div class="ci-title">
-                                            Call Us
-                                        </div>
-                                        <div class="ci-text">
-                                            02 6260 3722
-                                        </div>
+                    <div class="col-md-10 offset-md-1">
+                        <div class="row">
+
+                            <!-- Phone -->
+                            <div class="col-sm-6 col-lg-4 pb-20">
+                                <div class="contact-item wow fadeScaleIn" data-wow-delay="0" data-wow-duration="1s">
+                                    <div class="ci-icon">
+                                        <i class="fa fa-phone-alt"></i>
+                                    </div>
+                                    <div class="ci-title">
+                                        Call Us
+                                    </div>
+                                    <div class="ci-text">
+                                        02 6260 3722
                                     </div>
                                 </div>
-                                <!-- End Phone -->
-
-                                <!-- Address -->
-                                <div class="col-sm-6 col-lg-4 pb-20">
-                                    <div class="contact-item wow fadeScaleIn" data-wow-delay=".1s"
-                                        data-wow-duration="1s">
-                                        <div class="ci-icon">
-                                            <i class="fa fa-map-marker-alt"></i>
-                                        </div>
-                                        <div class="ci-title">
-                                            Address
-                                        </div>
-                                        <div class="ci-text">
-                                            Unit 3, Level 1 14 Napier Close, Deakin ACT 2600
-                                        </div>
-                                        <div class="ci-link">
-                                            <a href="https://goo.gl/maps/tT9u1LWmWuvtkgau9" target="_blank">See on the
-                                                Map</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- End Address -->
-
-                                <!-- Email -->
-                                <div class="col-sm-6 col-lg-4 pb-20">
-                                    <div class="contact-item wow fadeScaleIn" data-wow-delay=".2s"
-                                        data-wow-duration="1s">
-                                        <div class="ci-icon">
-                                            <i class="fa fa-envelope"></i>
-                                        </div>
-                                        <div class="ci-title">
-                                            Email
-                                        </div>
-                                        <div class="ci-text">
-                                            admin<span style="display:none">hello</span>@linkservices.com.au
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- End Email -->
-
                             </div>
-                            <div class="row">
-                                <!-- Office Hours -->
-                                <div class="col-sm-6 col-lg-4 pb-20">
-                                    <div class="contact-item wow fadeScaleIn" data-wow-delay="0" data-wow-duration="1s">
-                                        <div class="ci-icon">
-                                            <i class="fa fa-clock"></i>
-                                        </div>
-                                        <div class="ci-title">
-                                            Office Hours
-                                        </div>
-                                        <div class="ci-text">
-                                            Monday - Friday: 09:00 - 17:00 <br />
-                                            Saturday & Sunday: Closed <br />
-                                            Public Holidays: Closed <br />
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- End Office Hours -->
+                            <!-- End Phone -->
 
-                                <!-- Post -->
-                                <div class="col-sm-6 col-lg-4 pb-20">
-                                    <div class="contact-item wow fadeScaleIn" data-wow-delay="0" data-wow-duration="1s">
-                                        <!-- Empty Div -->
+                            <!-- Address -->
+                            <div class="col-sm-6 col-lg-4 pb-20">
+                                <div class="contact-item wow fadeScaleIn" data-wow-delay=".1s" data-wow-duration="1s">
+                                    <div class="ci-icon">
+                                        <i class="fa fa-map-marker-alt"></i>
+                                    </div>
+                                    <div class="ci-title">
+                                        Address
+                                    </div>
+                                    <div class="ci-text">
+                                        Unit 3, Level 1 14 Napier Close, Deakin ACT 2600
+                                    </div>
+                                    <div class="ci-link">
+                                        <a href="https://goo.gl/maps/tT9u1LWmWuvtkgau9" target="_blank">See on the
+                                            Map</a>
                                     </div>
                                 </div>
-                                <!-- End Post -->
-
-                                <!-- Post -->
-                                <div class="col-sm-6 col-lg-4 pb-20">
-                                    <div class="contact-item wow fadeScaleIn" data-wow-delay="0" data-wow-duration="1s">
-                                        <div class="ci-icon">
-                                            <i class="fa fa-envelope"></i>
-                                        </div>
-                                        <div class="ci-title">
-                                            Mail
-                                        </div>
-                                        <div class="ci-text">
-                                            PO Box 154 Curtin ACT 2605
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- End Post -->
                             </div>
+                            <!-- End Address -->
+
+                            <!-- Email -->
+                            <div class="col-sm-6 col-lg-4 pb-20">
+                                <div class="contact-item wow fadeScaleIn" data-wow-delay=".2s" data-wow-duration="1s">
+                                    <div class="ci-icon">
+                                        <i class="fa fa-envelope"></i>
+                                    </div>
+                                    <div class="ci-title">
+                                        Email
+                                    </div>
+                                    <div class="ci-text">
+                                        admin<span style="display:none">hello</span>@linkservices.com.au
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End Email -->
+
                         </div>
+                        <div class="row">
+                            <!-- Office Hours -->
+                            <div class="col-sm-6 col-lg-4 pb-20">
+                                <div class="contact-item wow fadeScaleIn" data-wow-delay="0" data-wow-duration="1s">
+                                    <div class="ci-icon">
+                                        <i class="fa fa-clock"></i>
+                                    </div>
+                                    <div class="ci-title">
+                                        Office Hours
+                                    </div>
+                                    <div class="ci-text">
+                                        Monday - Friday: 09:00 - 17:00 <br />
+                                        Saturday & Sunday: Closed <br />
+                                        Public Holidays: Closed <br />
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End Office Hours -->
 
+                            <!-- Post -->
+                            <div class="col-sm-6 col-lg-4 pb-20">
+                                <div class="contact-item wow fadeScaleIn" data-wow-delay="0" data-wow-duration="1s">
+                                    <!-- Empty Div -->
+                                </div>
+                            </div>
+                            <!-- End Post -->
+
+                            <!-- Post -->
+                            <div class="col-sm-6 col-lg-4 pb-20">
+                                <div class="contact-item wow fadeScaleIn" data-wow-delay="0" data-wow-duration="1s">
+                                    <div class="ci-icon">
+                                        <i class="fa fa-envelope"></i>
+                                    </div>
+                                    <div class="ci-title">
+                                        Mail
+                                    </div>
+                                    <div class="ci-text">
+                                        PO Box 154 Curtin ACT 2605
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End Post -->
+                        </div>
                     </div>
-
-
 
                 </div>
+
+
+
             </section>
             <!-- End Contact Section -->
 
@@ -332,7 +349,8 @@ You can find the code of your language here - https://www.w3schools.com/tags/ref
                     <a href="https://www.facebook.com/LinkStrata" title="Facebook" target="_blank"><i
                             class="fab fa-facebook-f"></i> <span class="sr-only">Facebook</span></a>
                     <a href="https://twitter.com/linkstrata" title="Twitter" target="_blank"><i
-                            class="fab fa-twitter"></i> <span class="sr-only">Twitter</span></a>
+                            class="fab fa-twitter"></i>
+                        <span class="sr-only">Twitter</span></a>
                 </div>
                 <!-- End Social Links -->
 
@@ -341,7 +359,9 @@ You can find the code of your language here - https://www.w3schools.com/tags/ref
 
                     <!-- Copyright -->
                     <div class="footer-copy">
-                        <a href="/">© LINK Corporate Services <script>new Date().getFullYear()>2017&&document.write(new Date().getFullYear());</script></a>
+                        <a href="/">© LINK Corporate Services
+                            <script>new Date().getFullYear() > 2017 && document.write(new Date().getFullYear());</script>
+                        </a>
                     </div>
                     <!-- End Copyright -->
 
@@ -389,7 +409,6 @@ You can find the code of your language here - https://www.w3schools.com/tags/ref
     <script src="js/jquery.ajaxchimp.min.js"></script>
     <script src="js/objectFitPolyfill.min.js"></script>
     <script src="js/splitting.min.js"></script>
-
 </body>
 
 </html>

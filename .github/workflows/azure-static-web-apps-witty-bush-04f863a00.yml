@@ -25,6 +25,7 @@ jobs:
         env:
           EMAIL_TO: ${{ secrets.EMAIL_TO }}
           EMAIL_FROM: ${{ secrets.EMAIL_FROM }}
+          CAPTCHA_SECRET: ${{ secrets.CAPTCHA_SECRET }}
       - name: Build And Deploy
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1

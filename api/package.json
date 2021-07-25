@@ -1,0 +1,12 @@
+{
+    "name": "functionapp",
+    "version": "1.0.0",
+    "description": "",
+    "scripts": {
+        "test": "echo \"No tests yet...\""
+    },
+    "dependencies": {
+        "grecaptcha": "^1.0.3"
+    },
+    "devDependencies": {}
+}

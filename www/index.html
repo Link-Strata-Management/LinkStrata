@@ -21,6 +21,9 @@
     <link rel="stylesheet" href="css/animate.min.css">
     <link rel="stylesheet" href="css/splitting.css">
 
+    <!-- Google reCaptcha -->
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
 </head>
 
 <body class="appear-animate">
@@ -87,7 +90,8 @@
                     <div class="home-content">
                         <!-- <h1 class="hs-line-4 mb-30 mb-xs-10 wow fadeInUpShort" data-wow-delay=".1s">Get the new
                             experience with</h1> -->
-                        <h2 class="hs-line-7 mb-60 mb-xs-20 wow fadeInUpShort" data-wow-delay=".2s">Your Boutique Strata Managers</h2>
+                        <h2 class="hs-line-7 mb-60 mb-xs-20 wow fadeInUpShort" data-wow-delay=".2s">Your Boutique Strata
+                            Managers</h2>
                         <div class="local-scroll mb-20 mb-xs-0 wow fadeInUpShort" data-wow-delay=".3s">
                         </div>
                     </div>
@@ -579,8 +583,7 @@
                                         <div class="form-group">
                                             <label for="name">Name</label>
                                             <input type="text" name="name" id="name" class="input-lg round form-control"
-                                                placeholder="Enter your name" pattern=".{3,100}" required
-                                                aria-required="true">
+                                                placeholder="Enter your name" pattern=".{3,100}" required>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -589,7 +592,7 @@
                                             <label for="email">Email</label>
                                             <input type="email" name="email" id="email"
                                                 class="input-lg round form-control" placeholder="Enter your email"
-                                                pattern=".{5,100}" required aria-required="true">
+                                                pattern=".{5,100}" required>
                                         </div>
                                     </div>
                                 </div>
@@ -599,121 +602,142 @@
                                     <label for="message">Message</label>
                                     <textarea name="message" id="message" class="input-lg round form-control"
                                         style="height: 130px;"
-                                        placeholder="Please take a moment to send us your address, contact details and any further information you may wish to discuss with us."></textarea>
+                                        placeholder="Please take a moment to send us your address, contact details and any further information you may wish to discuss with us."
+                                        required></textarea>
                                 </div>
 
                                 <div class="row">
-                                    <div class="col-sm-6">
+                                    <div class="col-sm">
                                         <!-- Inform Tip -->
-                                        <div class="form-tip pt-20 pt-sm-0 mb-sm-20">
+                                        <div class="form-tip pt-sm-0 mb-sm-20">
                                             All fields are required
                                         </div>
                                     </div>
-                                    <div class="col-sm-6">
+                                    <div class="col-sm text-center">
+                                        <!-- reCaptcha -->
+                                        <div class="g-recaptcha" data-sitekey="6LfTc7YbAAAAAOHU0asGx0HT92aUfEwu6o5fh_y7"
+                                            data-callback="enableBtn" data-expired-callback="disableBtn"></div>
+                                        <div class="text-center" id="captchaNotify">
+                                            <p class="form-tip pt-sm-0 mb-sm-20 ">To help us combat spam, please
+                                                complete the CAPTCHA.
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm">
                                         <!-- Send Button -->
-                                        <div id="output"></div>
-                                        <div class="text-end pt-10">
-                                            <button class="submit_btn btn btn-mod btn-large btn-round" id="submit_btn"
-                                                aria-controls="result">
+                                        <div class="text-center" id="output"></div>
+                                        <div class="pt-10 text-center">
+                                            <button class="submit_btn btn btn-mod btn-large btn-round g-recaptcha"
+                                                id="submit_btn" aria-controls="result">
                                                 Submit Message
                                             </button>
+                                            <!-- <p class="form-tip pt-10 pt-sm-0 mb-sm-20">To prevent spam, this site is
+                                                protected by reCAPTCHA and the Google. The Google <a
+                                                    href="https://policies.google.com/privacy">Privacy Policy</a> and <a
+                                                    href="https://policies.google.com/terms">Terms of Service</a> apply.
+                                            </p> -->
                                         </div>
                                     </div>
                                 </div>
-
-                            </form>
-
                         </div>
-                    </div>
-                    <!-- End Contact Form -->
 
+                        </form>
+
+                        <div class="g-recaptcha" data-sitekey="6Lc3XbUbAAAAAO5iI03rrlb8D3heeKHKEuabtk53"
+                            data-callback="onSubmit" data-size="invisible">
+                        </div>
+
+                    </div>
                 </div>
-            </section>
-            <!-- End Contact Section -->
+                <!-- End Contact Form -->
+
+    </div>
+    </section>
+    <!-- End Contact Section -->
 
 
-            <!-- Google Map -->
-            <div class="google-map">
+    <!-- Google Map -->
+    <div class="google-map">
 
-                <a href="#" class="map-section">
-                    <div class="map-toggle wow fadeInUpShort" aria-hidden="true">
-                        <div class="mt-icon">
-                            <i class="fa fa-map-marker-alt"></i>
-                        </div>
-                        <div class="mt-text">
-                            <div class="mt-open">Open the map <i class="mt-open-icon"></i></div>
-                            <div class="mt-close">Close the map <i class="mt-close-icon"></i></div>
-                        </div>
+        <a href="#" class="map-section">
+            <div class="map-toggle wow fadeInUpShort" aria-hidden="true">
+                <div class="mt-icon">
+                    <i class="fa fa-map-marker-alt"></i>
+                </div>
+                <div class="mt-text">
+                    <div class="mt-open">Open the map <i class="mt-open-icon"></i></div>
+                    <div class="mt-close">Close the map <i class="mt-close-icon"></i></div>
+                </div>
+            </div>
+        </a>
+
+        <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5635.324346130678!2d149.09527682649562!3d-35.32104762378206!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xad937b0bed3706!2sLink%20Strata%20Management!5e0!3m2!1sen!2sau!4v1624257928129!5m2!1sen!2sau"
+            width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" aria-hidden="false"
+            tabindex="0"></iframe>
+
+    </div>
+    <!-- End Google Map -->
+
+    <!-- Call Action Section -->
+    <section class="small-section bg-dark light-content">
+        <div class="container relative">
+            <div class="row wow fadeInUpShort">
+                <div class="col-md-8 offset-md-2 text-center">
+                    <h3 class="call-action-1-heading">Want to discuss how to make the change?</h3>
+                    <div class="call-action-1-decription mb-60 mb-sm-30">
+                        Contact the friendly LINK team to make the switch!
                     </div>
-                </a>
 
-                <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5635.324346130678!2d149.09527682649562!3d-35.32104762378206!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xad937b0bed3706!2sLink%20Strata%20Management!5e0!3m2!1sen!2sau!4v1624257928129!5m2!1sen!2sau"
-                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" aria-hidden="false"
-                    tabindex="0"></iframe>
+                    <div class="local-scroll">
+                        <a href="#contact" class="btn btn-mod btn-w btn-large btn-round">Contact Us</a> <a
+                            href="quote.html" class="btn btn-mod btn-w btn-large btn-round">Request Quote</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Call Action Section -->
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="page-section bg-gray-lighter footer pb-20 pb-sm-50">
+        <div class="container">
+
+            <!-- Social Links -->
+            <div class="footer-social-links mb-20 mb-xs-40">
+                <a href="https://www.facebook.com/LinkStrata" title="Facebook" target="_blank"><i
+                        class="fab fa-facebook-f"></i> <span class="sr-only">Facebook</span></a>
+                <a href="https://twitter.com/linkstrata" title="Twitter" target="_blank"><i class="fab fa-twitter"></i>
+                    <span class="sr-only">Twitter</span></a>
+            </div>
+            <!-- End Social Links -->
+
+            <!-- Footer Text -->
+            <div class="footer-text">
+
+                <!-- Copyright -->
+                <div class="footer-copy">
+                    <a href="/">© LINK Corporate Services
+                        <script>new Date().getFullYear() > 2017 && document.write(new Date().getFullYear());</script>
+                    </a>
+                </div>
+                <!-- End Copyright -->
 
             </div>
-            <!-- End Google Map -->
+            <!-- End Footer Text -->
 
-            <!-- Call Action Section -->
-            <section class="small-section bg-dark light-content">
-                <div class="container relative">
-                    <div class="row wow fadeInUpShort">
-                        <div class="col-md-8 offset-md-2 text-center">
-                            <h3 class="call-action-1-heading">Want to discuss how to make the change?</h3>
-                            <div class="call-action-1-decription mb-60 mb-sm-30">
-                                Contact the friendly LINK team to make the switch! 
-                            </div>
+        </div>
 
-                            <div class="local-scroll">
-                                <a href="#contact" class="btn btn-mod btn-w btn-large btn-round">Contact Us</a> <a
-                                    href="quote.html" class="btn btn-mod btn-w btn-large btn-round">Request Quote</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <!-- End Call Action Section -->
+        <!-- Top Link -->
+        <div class="local-scroll">
+            <a href="#top" class="link-to-top"><i class="link-to-top-icon"></i></a>
+        </div>
+        <!-- End Top Link -->
 
-        </main>
-
-        <!-- Footer -->
-        <footer class="page-section bg-gray-lighter footer pb-20 pb-sm-50">
-            <div class="container">
-
-                <!-- Social Links -->
-                <div class="footer-social-links mb-20 mb-xs-40">
-                    <a href="https://www.facebook.com/LinkStrata" title="Facebook" target="_blank"><i
-                            class="fab fa-facebook-f"></i> <span class="sr-only">Facebook</span></a>
-                    <a href="https://twitter.com/linkstrata" title="Twitter" target="_blank"><i
-                            class="fab fa-twitter"></i> <span class="sr-only">Twitter</span></a>
-                </div>
-                <!-- End Social Links -->
-
-                <!-- Footer Text -->
-                <div class="footer-text">
-
-                    <!-- Copyright -->
-                    <div class="footer-copy">
-                        <a href="/">© LINK Corporate Services
-                            <script>new Date().getFullYear() > 2017 && document.write(new Date().getFullYear());</script>
-                        </a>
-                    </div>
-                    <!-- End Copyright -->
-
-                </div>
-                <!-- End Footer Text -->
-
-            </div>
-
-            <!-- Top Link -->
-            <div class="local-scroll">
-                <a href="#top" class="link-to-top"><i class="link-to-top-icon"></i></a>
-            </div>
-            <!-- End Top Link -->
-
-        </footer>
-        <!-- End Footer -->
+    </footer>
+    <!-- End Footer -->
 
     </div>
     <!-- End Page Wrap -->
