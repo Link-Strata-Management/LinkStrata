@@ -3,7 +3,7 @@
  --------------------------------------------- */
 
 $('form').on('submit', function (e) {
-    // $("#submit_btn").click(function () {
+    // Prevent the page from refreshing
     e.preventDefault();
 
     //get input field values
