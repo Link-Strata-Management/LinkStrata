@@ -1,8 +1,10 @@
 /* ---------------------------------------------
  Contact form
  --------------------------------------------- */
- $(document).ready(function () {
-    $("#submit_btn").click(function () {
+$(document).ready(function () {
+    $('#submit_btn').on('submit', function (e) {
+        // $("#submit_btn").click(function () {
+        e.preventDefault();
 
         //get input field values
         var user_name = $('input[name=name]').val();
