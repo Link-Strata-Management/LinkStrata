@@ -7,6 +7,9 @@ $('form').on('submit', function (e) {
     e.preventDefault();
 
     //get input field values
+    var user_name = $('input[name=name]').val();
+    var user_email = $('input[name=email]').val();
+    var user_message = $('textarea[name=message]').val();
     var captcha = $('textarea[name=g-recaptcha-response]').val();
 
     //simple validation at client's end
