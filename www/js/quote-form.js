@@ -63,7 +63,7 @@ $('form').on('submit', function (e) {
 
         let name = $('input[name=name]').val();
         let email = $('input[name=email]').val();
-        let message = `Hi ${user_name}, Thanks for contacting us regarding a new quote. A member of our staff will be in contact shortly. \n\n\nHere's the details you've sent to us: \n\nName: ${user_name} \nPhone: ${user_phone}  \nEmail: ${user_email} \nUnit Class: ${user_class} \nUP Number: ${user_unitplan} \nCurrently Managed: ${user_currentlymanaged} \nAddress: ${user_address} \nNumber of Units: ${user_unitscount} \nAdditional: ${user_additional}`;
+        let message = `Hi ${user_name}, Thanks for contacting us regarding a new quote. A member of our staff will be in contact shortly. \n\nHere's the details you've sent to us: \n\nName: ${user_name} \nPhone: ${user_phone}  \nEmail: ${user_email} \nUnit Class: ${user_class} \nUP Number: ${user_unitplan} \nCurrently Managed: ${user_currentlymanaged} \nAddress: ${user_address} \nNumber of Units: ${user_unitscount} \nAdditional: ${user_additional}`;
         let captcha = $('textarea[name=g-recaptcha-response]').val();
 
         fetch('/api/send-mailmessage', {

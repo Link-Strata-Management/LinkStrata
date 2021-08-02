@@ -21,7 +21,6 @@
             "name": "message",
             "apiKey": "SENDGRID_APIKEY",
             "from": "Link Strata Management <#{EMAIL_FROM}#>",
-            "to": "cory@manson.id.au",
             "direction": "out"
         }
     ]
