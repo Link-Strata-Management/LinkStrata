@@ -2,32 +2,16 @@
  Contact form
  --------------------------------------------- */
 
-$('#submit_btn').on('submit', function (e) {
+$('form').on('submit', function (e) {
     // $("#submit_btn").click(function () {
     e.preventDefault();
 
     //get input field values
-    var user_name = $('input[name=name]').val();
-    var user_email = $('input[name=email]').val();
-    var user_message = $('textarea[name=message]').val();
     var captcha = $('textarea[name=g-recaptcha-response]').val();
 
     //simple validation at client's end
     //we simply change border color to red if empty field using .css()
     var proceed = true;
-    if (user_name == "") {
-        $('input[name=name]').css('border-color', '#e41919');
-        proceed = false;
-    }
-    if (user_email == "") {
-        $('input[name=email]').css('border-color', '#e41919');
-        proceed = false;
-    }
-
-    if (user_message == "") {
-        $('textarea[name=message]').css('border-color', '#e41919');
-        proceed = false;
-    }
 
     if (captcha == "") {
 
