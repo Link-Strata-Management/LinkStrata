@@ -17,7 +17,6 @@ $('form').on('submit', function (e) {
     var proceed = true;
 
     if (captcha == "") {
-
         output =
             output =
             `
