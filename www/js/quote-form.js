@@ -12,9 +12,26 @@ function onRecaptchaExpired() {
     document.getElementById('submit_btn').disabled = true;
 }
 
+// Track submission to prevent rapid resubmission
+let lastSubmitTime = 0;
+const SUBMIT_COOLDOWN = 10000; // 10 seconds between submissions
+
 $('form').on('submit', function (e) {
     // Prevent the page from refreshing
     e.preventDefault();
+    
+    // Check cooldown period
+    const now = Date.now();
+    if (now - lastSubmitTime < SUBMIT_COOLDOWN) {
+        const remainingSeconds = Math.ceil((SUBMIT_COOLDOWN - (now - lastSubmitTime)) / 1000);
+        output = `
+        <div class="alert alert-warning" role="alert">
+        Please wait ${remainingSeconds} seconds before submitting again.
+        </div>        
+        `;
+        document.getElementById('output').innerHTML = output;
+        return false;
+    }
 
     //get input field values
     var user_name = $('input[name=name]').val();
@@ -79,6 +96,9 @@ $('form').on('submit', function (e) {
 
     //everything looks good! proceed...
     if (proceed) {
+        // Disable button during submission
+        document.getElementById('submit_btn').disabled = true;
+        lastSubmitTime = Date.now();
 
         let name = $('input[name=name]').val();
         let email = $('input[name=email]').val();
