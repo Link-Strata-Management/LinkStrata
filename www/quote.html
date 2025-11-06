@@ -197,7 +197,7 @@ You can find the code of your language here - https://www.w3schools.com/tags/ref
                                     <div class="col-sm text-center">
                                         <!-- reCaptcha -->
                                         <div class="g-recaptcha" data-sitekey="6LfTc7YbAAAAAOHU0asGx0HT92aUfEwu6o5fh_y7"
-                                            data-callback="enableBtn" data-expired-callback="disableBtn"></div>
+                                            data-callback="onRecaptchaSuccess" data-expired-callback="onRecaptchaExpired"></div>
                                         <div class="text-center" id="captchaNotify">
                                             <p class="form-tip pt-sm-0 mb-sm-20 ">To help us combat spam, please
                                                 complete the CAPTCHA.
@@ -208,8 +208,8 @@ You can find the code of your language here - https://www.w3schools.com/tags/ref
                                         <!-- Send Button -->
                                         <div class="text-center" id="output"></div>
                                         <div class="pt-10 text-center">
-                                            <button class="submit_btn btn btn-mod btn-large btn-round g-recaptcha"
-                                                id="submit_btn" aria-controls="result">
+                                            <button class="submit_btn btn btn-mod btn-large btn-round"
+                                                id="submit_btn" aria-controls="result" disabled>
                                                 Submit Quote Request
                                             </button>
                                         </div>

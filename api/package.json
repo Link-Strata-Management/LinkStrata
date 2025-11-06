@@ -6,7 +6,9 @@
         "test": "echo \"No tests yet...\""
     },
     "dependencies": {
-        "grecaptcha": "^1.0.3"
+        "grecaptcha": "^1.0.3",
+        "@azure/communication-email": "^1.0.0",
+        "@azure/data-tables": "^13.2.2"
     },
     "devDependencies": {}
 }
