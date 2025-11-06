@@ -12,7 +12,7 @@ const MAX_REQUESTS_PER_IP = 5; // Max 5 emails per hour per IP
 
 // Azure Table Storage for rate limiting (shared across all function instances)
 let tableClient = null;
-const USE_TABLE_STORAGE = process.env.AZURE_STORAGE_CONNECTION_STRING || '#{AZURE_STORAGE_CONNECTION_STRING}#';
+const USE_TABLE_STORAGE = '#{AZURE_STORAGE_CONNECTION_STRING}#';
 
 // Initialize table client if connection string is available
 if (USE_TABLE_STORAGE && !USE_TABLE_STORAGE.includes('#{')) {
