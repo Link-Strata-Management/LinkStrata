@@ -1,6 +1,17 @@
 /* ---------------------------------------------
  Quote form
  --------------------------------------------- */
+
+// Enable submit button when reCAPTCHA is completed
+function onRecaptchaSuccess() {
+    document.getElementById('submit_btn').disabled = false;
+}
+
+// Disable submit button when reCAPTCHA expires
+function onRecaptchaExpired() {
+    document.getElementById('submit_btn').disabled = true;
+}
+
 $('form').on('submit', function (e) {
     // Prevent the page from refreshing
     e.preventDefault();
@@ -47,6 +58,10 @@ $('form').on('submit', function (e) {
             //reset values in all input fields
             $('#contact_form input').val('');
             $('#contact_form textarea').val('');
+            
+            //reset reCAPTCHA
+            grecaptcha.reset();
+            document.getElementById('submit_btn').disabled = true;
         } else {
             output =
                 `
@@ -55,6 +70,10 @@ $('form').on('submit', function (e) {
         </div>        
         `;
             document.getElementById('output').innerHTML = output;
+            
+            //reset reCAPTCHA on error
+            grecaptcha.reset();
+            document.getElementById('submit_btn').disabled = true;
         }
     }
 
