@@ -192,7 +192,7 @@ module.exports = async function (context, req) {
             context.log('Email queued successfully:', messageId);
 
             // Return success immediately without waiting for delivery
-            context.res = {
+            context.res = { 
                 status: 200,
                 body: {
                     message: "Email sent successfully",
