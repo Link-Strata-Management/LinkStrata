@@ -185,18 +185,31 @@ module.exports = async function (context, req) {
                 }
             };
 
+            // Start sending email (returns immediately with operation ID)
             const poller = await emailClient.beginSend(emailMessage);
-            const response = await poller.pollUntilDone();
+            const messageId = poller.getOperationState().id;
 
-            context.log('Email sent successfully:', response);
+            context.log('Email queued successfully:', messageId);
 
+            // Return success immediately without waiting for delivery
             context.res = {
                 status: 200,
                 body: {
                     message: "Email sent successfully",
-                    id: response.id
+                    id: messageId
                 }
             };
+
+            // Optional: Continue polling in background (non-blocking)
+            // This allows logging of final status without delaying the response
+            poller.pollUntilDone()
+                .then(result => {
+                    context.log('Email delivery completed:', result);
+                })
+                .catch(error => {
+                    context.log.error('Email delivery failed:', error);
+                });
+
         } catch (error) {
             context.log.error('Error sending email:', error);
             context.res = {

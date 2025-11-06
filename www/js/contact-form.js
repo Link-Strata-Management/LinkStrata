@@ -93,6 +93,14 @@ $('form').on('submit', function (e) {
         document.getElementById('submit_btn').disabled = true;
         lastSubmitTime = Date.now();
         
+        // Show immediate feedback to user
+        output = `
+        <div class="alert alert-info" role="alert">
+        <i class="fa fa-spinner fa-spin"></i> Sending message...
+        </div>        
+        `;
+        document.getElementById('output').innerHTML = output;
+        
         let name = $('input[name=name]').val();
         let email = $('input[name=email]').val();
         let message = `Hi ${user_name}, Thanks for contacting us with your message. A member of our staff will be in contact shortly. \n\nHere's the details you've sent to us: \n\nName: ${user_name}  \nEmail: ${user_email} \nMessage: ${user_message}`;
@@ -113,6 +121,16 @@ $('form').on('submit', function (e) {
             })
         })
             .then((res) => processResponse(res))
+            .catch((error) => {
+                output = `
+        <div class="alert alert-danger" role="alert">
+        Network error. Please check your connection and try again.
+        </div>        
+        `;
+                document.getElementById('output').innerHTML = output;
+                grecaptcha.reset();
+                document.getElementById('submit_btn').disabled = true;
+            })
     }
 
     return false;
